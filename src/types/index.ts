@@ -44,9 +44,16 @@ export const ProcessPageSchema = BaseWPSchema.extend({
 });
 
 export const CategorySchema = z.object({
+	id: z.number(),
 	name: z.string(),
 	slug: z.string(),
 });
+
+export const CategoriesSlugSchema = z.array(
+	CategorySchema.pick({
+		slug: true,
+	}),
+);
 
 export const CategoriesSchema = z.array(CategorySchema);
 
