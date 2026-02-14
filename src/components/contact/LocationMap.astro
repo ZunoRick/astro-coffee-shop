@@ -1,0 +1,33 @@
+---
+import type { Location } from '@/types';
+
+interface Props {
+	location: Location;
+}
+
+const { location } = Astro.props;
+const { lat, lng, zoom, address } = location;
+const apiKey = import.meta.env.PUBLIC_GOOGLE_MAPS_API_KEY;
+---
+
+<div>
+	<h3 class="text-coffee-900 font-black text-center text-2xl uppercase mb-5">
+		Ubicación
+	</h3>
+	<h4 class="text-coffee-700 font-bold text-center">{address}</h4>
+	<gmp-map
+		center={`${lat}, ${lng}`}
+		zoom={zoom}
+		map-id="DEMO_MAP_ID"
+		style="height: 500px"
+	>
+		<gmp-advanced-marker
+			position={`${lat}, ${lng}`}
+			title="Ottumwa, IA"
+			map-id="DEMO_MAP_ID"></gmp-advanced-marker>
+	</gmp-map>
+</div>
+
+<script
+	src={`https://maps.googleapis.com/maps/api/js?key=${apiKey}&libraries=maps,marker`}
+	defer></script>
