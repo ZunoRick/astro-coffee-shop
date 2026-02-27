@@ -12,6 +12,7 @@ export default defineConfig({
 
 	image: {
 		domains: ['coffeeshop.local', 'plum-tiger-200350.hostingersite.com'],
+		remotePatterns: [{ protocol: 'http', hostname: 'localhost' }],
 	},
 
 	adapter: netlify(),
